@@ -49,6 +49,16 @@ const userSchema = new mongoose.Schema(
       min: 18,
       max: 120,
     },
+     photoUrl: {
+      type: String,
+      default:
+        "https://th.bing.com/th/id/R.7b43e7e20d33dd7c296b7c2646689f0e?rik=aLPovtVm1NfLrQ&riu=http%3a%2f%2fassets.stickpng.com%2fthumbs%2f585e4bcdcb11b227491c3396.png&ehk=u8uV1Dd4PVCHzWCJmq%2bA3UxpQ44LLHTloDmqlwjfkog%3d&risl=&pid=ImgRaw&r=0",
+      validate(value) {
+        if (!validator.isURL(value)) {
+          throw new Error("invalid photo url");
+        }
+      },
+    },
     password: {
       type: String,
       required: true,
@@ -70,6 +80,8 @@ const userSchema = new mongoose.Schema(
 
 
 
+
+
 userSchema.methods.getJWT = async function () {
   const user = this;
   const token = await jwt.sign({ _id: user._id }, "secret@Key", {
@@ -79,10 +91,9 @@ userSchema.methods.getJWT = async function () {
 };
 
 
-//there is a issue in password validation
 
 
-userSchema.method.validatePassword=async function (password){
+userSchema.methods.validatePassword=async function (password){
   const user = this;
   const passwordHash = user.password;
   const isPasswordValid = await bcrypt.compareSync(password, passwordHash);
