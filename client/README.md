@@ -85,3 +85,4 @@ cd server
 create a environment file on the root of the apllication and add the envoronment variables
 do npm install
 do npm run dev
+
