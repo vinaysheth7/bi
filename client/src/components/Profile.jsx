@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import ChatWidget from "./Chat";
 
 const ProfileCard = () => {
   const user = useSelector((store) => store.user);
@@ -17,6 +18,7 @@ const ProfileCard = () => {
   }
 
   return (
+    <>
     <div className="max-w-sm mx-auto bg-white shadow-lg rounded-xl overflow-hidden border border-gray-200 p-6 text-center my-40">
       <img
         src={user?.photoUrl}
@@ -44,6 +46,9 @@ const ProfileCard = () => {
         </a>
       </p>
     </div>
+    <ChatWidget />
+    </>
+    
   );
 };
 

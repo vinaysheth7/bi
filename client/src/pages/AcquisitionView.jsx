@@ -5,6 +5,7 @@ import {
   DrawingManager,
   useJsApiLoader,
 } from "@react-google-maps/api";
+import ChatWidget from "../components/Chat";
 
 const center = { lat: 51.508742, lng: -0.12085 };
 const containerStyle = { width: "100%", height: "500px" };
@@ -35,6 +36,7 @@ const AcquisitionView = () => {
   };
 
   return isLoaded ? (
+    <>
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
@@ -63,6 +65,8 @@ const AcquisitionView = () => {
         onOverlayComplete={handleOverlayComplete}
       />
     </GoogleMap>
+    <ChatWidget></ChatWidget>
+    </>
   ) : (
     <div>Loading...</div>
   );
