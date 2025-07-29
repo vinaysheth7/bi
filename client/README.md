@@ -71,3 +71,17 @@ Used useEffect at the root of the app to fetch the profile on initial render.
 On success, dispatched user data to the Redux store using useDispatch, so the state gets rehydrated.
 
 
+How to setup 
+
+git clone https://github.com/Mohdsaad21-6/bi.git
+cd client
+create a environment file on the root of the apllication and add the environment variables
+do npm installl
+do npm run dev
+
+
+open another terminal go to server folder
+cd server
+create a environment file on the root of the apllication and add the envoronment variables
+do npm install
+do npm run dev
