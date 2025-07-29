@@ -24,6 +24,12 @@ authRouter.post("/signup", async (req, res) => {
       password: passwordHash,
     });
 
+
+    const token = await user.getJWT()
+      console.log(token);
+
+      res.cookie("token", token,{httpOnly:true});
+
     console.log(user);
     await user.save();
     res.status(201).send(user);
@@ -44,7 +50,6 @@ authRouter.post("/login", async (req, res) => {
       return res.status(404).send("Please enter a valid email or password");
     }
 
-    //there is issue in schemavalidation in validatepassword
     
 
     const isPasswordValid = await user.validatePassword(password);

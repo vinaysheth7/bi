@@ -16,9 +16,9 @@ profileRouter.get("/profile",userAuth, async (req, res) => {
       console.log(user);
     }
 
-    // console.log(cookies);
-
-    res.send("Profile data" + user);
+    res.status(200).json({
+      user,
+    })
   } catch (error) {
     res.status(400).send(error.message);
   }

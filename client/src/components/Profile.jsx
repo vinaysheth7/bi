@@ -1,7 +1,16 @@
 import { useSelector } from "react-redux"
+// import { useEffect } from "react";
+// import axios from "axios";
+// import { useEffect } from "react";
+// import { addUser } from "../utils/userSlice";
 
 const ProfileCard = () => {
   const user = useSelector((store) => store.user);
+
+
+
+  
+
 
   if (!user) {
     return (

@@ -10,6 +10,7 @@ const { userAuth } = require("./middleware/auth.js");
 const authRouter =require("./utils/auth.js");
 const cors = require("cors");
 const profileRouter = require("./utils/profile.js");
+const marketRouter = require("./utils/market.js");
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
@@ -22,6 +23,7 @@ app.use(cors({
 
 app.use("/",authRouter)
 app.use("/",profileRouter)
+app.use("/",marketRouter)
 
 
 

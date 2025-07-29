@@ -201,6 +201,7 @@ const Login = () => {
         justifyContent: "center",
         alignItems: "center",
         px: 2,
+        width: "100%",
       }}
     >
       <Paper elevation={4} sx={{ p: 4, maxWidth: 400, width: "100%" }}>
