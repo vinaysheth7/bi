@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const URL =
-  "mongodb+srv://shaadansari8081:j03RrsGpBwGyF76Y@bi.dmzqffr.mongodb.net/bi";
-
+  process.env.DB_CONNECTION_SECRET
 
 const connectDB = async () => {
   await mongoose.connect(URL);

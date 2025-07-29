@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config();
 const connectDB = require("./config/database");
 // const User = require("./models/user");
 const User = require("./models/user.js");
@@ -14,6 +15,7 @@ const marketRouter = require("./utils/market.js");
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+
 
 app.use(cors({
   origin: "http://localhost:5173",
