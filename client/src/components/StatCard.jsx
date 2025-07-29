@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { Card, CardContent, Typography, Button, Select, MenuItem } from "@mui/material";
-// import DataDialog from "./DataDialog";
-import DataDialog from "./DataDialogue"; // Adjust the import path as necessary
+import DataDialog from "./DataDialogue"; 
 
 const StatCard = ({ title, fullData, displayField }) => {
   const [open, setOpen] = useState(false);
   const [sortType, setSortType] = useState("default");
 
-  // Sorting logic for topData
   const sortedData = [...fullData].sort((a, b) => {
     const valA = a[displayField];
     const valB = b[displayField];

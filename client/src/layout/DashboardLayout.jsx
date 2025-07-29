@@ -11,7 +11,7 @@ const DashboardLayout = () => {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true); // 👈 New state for loader
+  const [loading, setLoading] = useState(true); 
 
   const fetchUser = async () => {
     try {
@@ -23,7 +23,7 @@ const DashboardLayout = () => {
       console.error("Error fetching user data:", error);
       navigate("/login");
     } finally {
-      setLoading(false); // 👈 Stop loading no matter what
+      setLoading(false); 
     }
   };
 
@@ -31,7 +31,6 @@ const DashboardLayout = () => {
     fetchUser();
   }, []);
 
-  // ⏳ While loading, show loader
   if (loading) {
     return (
       <div className="h-screen flex items-center justify-center bg-white text-gray-600">
@@ -40,7 +39,6 @@ const DashboardLayout = () => {
     );
   }
 
-  // 🧠 If no user, show login
   if (!user) {
     return (
       <div className="flex-1 flex items-center justify-center bg-gray-100">
@@ -49,7 +47,6 @@ const DashboardLayout = () => {
     );
   }
 
-  // 🎯 Main dashboard layout
   return (
     <div className="flex h-screen">
       <Sidebar />

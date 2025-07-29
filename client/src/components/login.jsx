@@ -1,144 +1,9 @@
-// import { useState } from "react";
-// import {
-//   TextField,
-//   Button,
-//   Typography,
-//   Paper,
-//   Divider,
-// } from "@mui/material";
-
-// const AuthForm = () => {
-//   const [isLogin, setIsLogin] = useState(true);
-//   const [formData, setFormData] = useState({
-//     name: "",
-//     username: "",
-//     email: "",
-//     password: "",
-//     confirmPassword: "",
-//   });
-
-//   const handleChange = (e) =>
-//     setFormData({ ...formData, [e.target.name]: e.target.value });
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     console.log(isLogin ? "Logging in..." : "Signing up...", formData);
-//     //can we make api call here?
-    
-//   };
-
-
-
-
-
-//   return (
-//     <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
-//       <Paper elevation={3} className="p-6 w-full max-w-md">
-//         <Typography variant="h5" className="text-center font-bold mb-2">
-//           {isLogin ? "Login" : "Sign Up"}
-//         </Typography>
-//         <Divider className="mb-6" />
-
-//         <form onSubmit={handleSubmit}>
-//   <div className="space-y-5">
-//     {!isLogin && (
-//       <>
-//         <div>
-//           <TextField
-//             label="Full Name"
-//             name="name"
-//             fullWidth
-//             variant="outlined"
-//             value={formData.name}
-//             onChange={handleChange}
-//           />
-//         </div>
-//         <div>
-//           <TextField
-//             label="Username"
-//             name="username"
-//             fullWidth
-//             variant="outlined"
-//             value={formData.username}
-//             onChange={handleChange}
-//           />
-//         </div>
-//         <div>
-//           <TextField
-//             label="Confirm Password"
-//             name="confirmPassword"
-//             type="password"
-//             fullWidth
-//             variant="outlined"
-//             value={formData.confirmPassword}
-//             onChange={handleChange}
-//           />
-//         </div>
-//       </>
-//     )}
-
-//     <div>
-//       <TextField
-//         label="Email"
-//         name="email"
-//         type="email"
-//         fullWidth
-//         variant="outlined"
-//         value={formData.email}
-//         onChange={handleChange}
-//       />
-//     </div>
-
-//     <div>
-//       <TextField
-//         label="Password"
-//         name="password"
-//         type="password"
-//         fullWidth
-//         variant="outlined"
-//         value={formData.password}
-//         onChange={handleChange}
-//       />
-//     </div>
-
-//     <div>
-//       <Button
-//         variant="contained"
-//         color="primary"
-//         fullWidth
-//         type="submit"
-//       >
-//         {isLogin ? "Login" : "Create Account"}
-//       </Button>
-//     </div>
-//   </div>
-// </form>
-
-//         <Typography className="mt-4 text-sm text-center">
-//           {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
-//           <button
-//             className="text-indigo-600 hover:underline font-medium"
-//             onClick={() => setIsLogin(!isLogin)}
-//           >
-//             {isLogin ? "Sign up" : "Login"}
-//           </button>
-//         </Typography>
-//       </Paper>
-//     </div>
-//   );
-// };
-
-// export default AuthForm;
-
-
 import axios from "axios";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 
-
 import { useNavigate } from "react-router-dom";
-// import { BASE_URL } from "../utils/constants";
 
 import {
   Box,
@@ -163,14 +28,13 @@ const Login = () => {
   const handleOnSubmit = async () => {
     try {
       const res = await axios.post(
-         "http://localhost:3000/login", // Replace with your actual backend URL
+        "http://localhost:3000/login", // Replace with your actual backend URL
         { emailId, password },
         { withCredentials: true }
       );
       dispatch(addUser(res.data));
       navigate("/profile");
-    console.log(res.data);
-    
+      console.log(res.data);
     } catch (err) {
       setError(err?.response?.data || "Something went wrong");
     }
@@ -179,14 +43,13 @@ const Login = () => {
   const handleSignUp = async () => {
     try {
       const res = await axios.post(
-         "http://localhost:3000/signup", 
+        "http://localhost:3000/signup",
         { firstName, lastName, emailId, password },
         { withCredentials: true }
       );
       dispatch(addUser(res.data));
       navigate("/profile");
-    console.log(res.data);
-    
+      console.log(res.data);
     } catch (err) {
       setError(err?.response?.data || "Something went wrong");
     }

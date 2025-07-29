@@ -9,16 +9,16 @@ import {
 const center = { lat: 51.508742, lng: -0.12085 };
 const containerStyle = { width: "100%", height: "500px" };
 
-// 👇 Only one dummy pin
+
 const dummyPin = { lat: 51.51, lng: -0.12 };
 
 const AcquisitionView = () => {
   const [polygon, setPolygon] = useState(null);
-  const [isVisible, setIsVisible] = useState(true); // Pin visibility
+  const [isVisible, setIsVisible] = useState(true); 
   const mapRef = useRef(null);
 
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyAZcJvTGliv_yO-u9SyAL09PsTdhiKKUO0",
+    googleMapsApiKey:import.meta.env.VITE_GOOGLEAPI_KEY ,
     libraries: ["drawing", "geometry"],
   });
 
@@ -31,7 +31,7 @@ const AcquisitionView = () => {
     const point = new google.maps.LatLng(dummyPin.lat, dummyPin.lng);
     const inside = google.maps.geometry.poly.containsLocation(point, newPoly);
 
-    setIsVisible(inside); // 🔍 Show/hide based on polygon
+    setIsVisible(inside); 
   };
 
   return isLoaded ? (
