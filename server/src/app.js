@@ -34,7 +34,7 @@ app.use("/",marketRouter)
 connectDB()
   .then(() => {
     console.log("Connected to MongoDB successfully");
-    app.listen(3000, () => {
+    app.listen(process.env.PORT || 5000, () => {
       console.log("Server is running on port 3000");
     });
   })
