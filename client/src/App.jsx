@@ -6,7 +6,7 @@ import URLsView from "./pages/URLsView";
 import Login from "./components/login";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
-import Profile from "./components/profile";
+#import Profile from "./components/profile";
 function App() {
   return (
     <Provider store={appStore}>
@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<DashboardLayout />}>
           <Route path="market-view" element={<MarketView />} />
-          <Route path="profile" element={<Profile />} />
+          ##<Route path="profile" element={<Profile />} />
           <Route path="login" element={<Login/>} />
           <Route path="acquisition-view" element={<AcquisitionView />} />
           <Route path="urls" element={<URLsView />} />
